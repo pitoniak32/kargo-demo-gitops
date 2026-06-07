@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: example-nginx
+  template:
+    metadata:
+      labels:
+        app: example-nginx
+    spec:
+      containers:
+      - image: ghcr.io/pitoniak32/nginx:latest
+        name: example-nginx
+        ports:
+        - name: http
+          containerPort: 3000
