@@ -1,0 +1,17 @@
+name: Promote
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Message to echo"
+        required: false
+        default: "Hello from GitHub Actions"
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "${{ github.event.inputs.message }}"
