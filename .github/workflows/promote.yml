@@ -3,12 +3,11 @@ name: Promote
 on:
   workflow_dispatch:
     inputs:
-      message:
-        description: "Message to echo"
-        required: false
-        default: "Hello from GitHub Actions"
       stage:
-        description: "stage to echo"
+        required: true
+      image:
+        required: true
+      imageTag:
         required: true
 
 jobs:
@@ -17,4 +16,4 @@ jobs:
 
     steps:
       - name: Print message
-        run: echo "${{ github.event.inputs.stage }} ${{ github.event.inputs.message }}"
+        run: echo "${{ github.event.inputs.stage }} ${{ github.event.inputs.image }}:${{ github.event.inputs.imageTag }}"
